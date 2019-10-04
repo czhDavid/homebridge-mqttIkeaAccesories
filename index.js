@@ -6,11 +6,11 @@ let Characteristic = null;
 
 class LightBulb {
   constructor(log, config) {
-    // set it in ast we will be receiving our first message soon
     this.ikeaColorTempRange = { min: 250, max: 454 };
     this.homekitColorTempRange = { min: 140, max: 499 };
 
     this.switchService = new Service.Lightbulb('Ikea lightbulb');
+    //set date of last message in the past
     this.lastUpdate = Date.now() - 500;
     this.config = config;
     this.mqttConnection = mqtt.connect(config.server);
@@ -139,7 +139,7 @@ class LightBulb {
 function exported(homebridge) {
   Service = homebridge.hap.Service;
   Characteristic = homebridge.hap.Characteristic;
-  homebridge.registerAccessory('homebridge-switch-plugin', 'MyAwesomeSwitch', LightBulb);
+  homebridge.registerAccessory('homebridge-mqttIkea-lighbulb', 'IkeaLightbulb', LightBulb);
 }
 
 module.exports = exported;
