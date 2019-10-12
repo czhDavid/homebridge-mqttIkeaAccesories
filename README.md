@@ -1,6 +1,8 @@
 # homebridge-mqttIkeaAccesories
 Integration of  [zigbee2mqtt](https://github.com/Koenkk/zigbee2mqtt.io) and homebridge for Ikea lightbulbs.
 Currently only Ikea TRADFRI LED1545G12 is supported. Other models might work but with no guarantee.
+
+Added support for the Ikea smart outlet.
 # Instalation
 ```
 npm i -g homebridge-mqtt-ikea-accesories
@@ -27,6 +29,12 @@ In this case it is mqtt://raspberrypi.local:1883 and zigbee2mqtt/Livingroombulb
     "comment": "This section is used to control the range of ports that separate accessory (like camera or television) should be bind to."
   },
   "accessories": [
+    {
+      "accessory": "IkeaOutlet",
+      "name": "IkeaOutlet",
+      "server": "mqtt://raspberrypi.local:1883",
+      "topic": "zigbee2mqtt/nighlightsOutletFake"
+    },
     {
       "accessory": "IkeaLightbulb",
       "name": "Lvingroom Lightbuld",
